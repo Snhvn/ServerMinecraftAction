@@ -26,12 +26,11 @@ jobs:
        echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | sudo tee /etc/apt/sources.list.d/playit-cloud.list
        sudo apt update
        sudo apt install playit
-    - name: Ip playit
-      run: |
     - name: Cài File Spigot Và Chạy Server
       run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
        wget -O server-icon.png ${{github.event.inputs.server_icon}}
+       sudo systemctl start playit &>/dev/null &
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
        rm -rf eula.txt
        wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
