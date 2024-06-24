@@ -28,12 +28,12 @@ jobs:
        sudo apt install playit
        wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64
        chmod +x playit-linux-amd64
+       playit setup &>/dev/null &
+       sudo systemctl start playit &>/dev/null &
     - name: Cài File Spigot Và Chạy Server
       run: |
-       sudo chmod 666
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
        wget -O server-icon.png ${{github.event.inputs.server_icon}}
-       sudo systemctl start playit &>/dev/null &
        ./playit-linux-amd64 &>/dev/null &
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
        rm -rf eula.txt
