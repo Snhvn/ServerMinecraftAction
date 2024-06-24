@@ -26,6 +26,7 @@ jobs:
        echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | sudo tee /etc/apt/sources.list.d/playit-cloud.list
        sudo apt update
        sudo apt install playit
+       playit setup
     - name: Cài File Spigot Và Chạy Server
       run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
