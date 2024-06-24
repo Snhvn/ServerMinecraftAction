@@ -1,4 +1,4 @@
-name: Java CI
+name: Server Minecraft No Plugin | Playit
 
 on:
   workflow_dispatch:
