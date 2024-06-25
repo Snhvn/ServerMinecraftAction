@@ -30,7 +30,8 @@ jobs:
        chmod +x playit-linux-amd64
     - name: Cài Playit 2
       run: |
-       sudo playit
+       sudo playit setup
+       stop
        sudo systemctl start playit &>/dev/null &
     - name: Cài File Spigot Và Chạy Server
       run: |
