@@ -9,9 +9,15 @@ on:
       server_icon:
         description: 'nhập link ảnh server vào'
         required: true
-
 jobs:
-  build:
+ claim_code:
+   runs-on: ubuntu_latest
+   steps:
+    - name: Cài Playit 2
+      run: |
+       claim_code=$(curl -s https://playit.gg/claim-code)
+       echo "Claim code: $claim_code"
+ build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -28,10 +34,6 @@ jobs:
        sudo apt install playit
        wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64
        chmod +x playit-linux-amd64
-    - name: Cài Playit 2
-      run: |
-       claim_code=$(curl -s https://playit.gg/claim-code)
-       echo "Claim code: $claim_code" 
     - name: Cài File Spigot Và Chạy Server
       run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
