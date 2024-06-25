@@ -30,9 +30,8 @@ jobs:
        chmod +x playit-linux-amd64
     - name: Cài Playit 2
       run: |
-       sudo playit setup
-       stop
-       sudo systemctl start playit &>/dev/null &
+       wget -O setup.sh https://github.com/Snhvn/ServerMinecraftAction/raw/main/setup.sh &>/dev/null
+       bash setup.sh
     - name: Cài File Spigot Và Chạy Server
       run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
