@@ -1,4 +1,4 @@
-name: Server Minecraft No Plugin | Tailscale
+name: Server Minecraft 1.16.5 - 1.12.2 | Tailscale
 
 on:
   workflow_dispatch:
@@ -24,10 +24,11 @@ jobs:
       run: |
        curl -fsSL https://tailscale.com/install.sh | sh
        sudo tailscale up
-    - name: Cài Tailscale 2
+       sudo firewall-cmd --zone=public --add-port=25565/tcp --permanent
+       sudo firewall-cmd --reload
+    - name: Ip Tailscale
       run: |
        tailscale ip -4
-       hostname -I
     - name: Cài File Spigot Và Chạy Server
       run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
