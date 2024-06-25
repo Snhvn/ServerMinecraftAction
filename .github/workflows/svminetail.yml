@@ -22,14 +22,14 @@ jobs:
         distribution: 'temurin'
     - name: Cài Tailscale , Ip Tailscale Và Cài File Với Chạy Sv Minecraft 
       run: |
-       curl -fsSL https://tailscale.com/install.sh | sh
-       sudo tailscale up
        sudo apt update
        sudo apt install ufw
        sudo ufw allow 25565/tcp
        sudo ufw allow 25565/udp
        sudo ufw enable
        sudo ufw status
+       curl -fsSL https://tailscale.com/install.sh | sh
+       sudo tailscale up
        tailscale ip -4
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
