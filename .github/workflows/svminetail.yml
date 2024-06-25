@@ -1,4 +1,4 @@
-name: Server Minecraft No Plugin | Playit
+name: Server Minecraft No Plugin | Tailscale
 
 on:
   workflow_dispatch:
@@ -20,11 +20,11 @@ jobs:
       with:
         java-version: '19'
         distribution: 'temurin'
-    - name: Cài Playit
+    - name: Cài Tailscale 
       run: |
        curl -fsSL https://tailscale.com/install.sh | sh
        sudo tailscale up
-    - name: Cài Playit 2
+    - name: Cài Tailscale 2
       run: |
        tailscale ip -4
        hostname -I
