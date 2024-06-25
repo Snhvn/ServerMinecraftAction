@@ -24,8 +24,11 @@ jobs:
       run: |
        curl -fsSL https://tailscale.com/install.sh | sh
        sudo tailscale up
-       sudo firewall-cmd --zone=public --add-port=25565/tcp --permanent
-       sudo firewall-cmd --reload
+       sudo apt update
+       sudo apt install ufw
+       sudo ufw allow 25565/tcp
+       sudo ufw enable
+       sudo ufw status
     - name: Ip Tailscale
       run: |
        tailscale ip -4
