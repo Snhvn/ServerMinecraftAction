@@ -20,22 +20,18 @@ jobs:
       with:
         java-version: '19'
         distribution: 'temurin'
-    - name: Cài Tailscale 
+    - name: Cài Tailscale , Ip Tailscale Và Cài File Với Chạy Sv Minecraft 
       run: |
        curl -fsSL https://tailscale.com/install.sh | sh
        sudo tailscale up
        sudo apt update
        sudo apt install ufw
        sudo ufw allow 25565/tcp
+       sudo ufw allow 25565/udp
        sudo ufw enable
        sudo ufw status
-    - name: Ip Tailscale
-      run: |
        tailscale ip -4
-    - name: Cài File Spigot Và Chạy Server
-      run: |
        wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
-       wget -O server-icon.png ${{github.event.inputs.server_icon}}
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
        rm -rf eula.txt
        wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
