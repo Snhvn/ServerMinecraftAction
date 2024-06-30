@@ -27,7 +27,9 @@ jobs:
        sudo apt install playit
     - name: Cài Playit 2
       run: |
-       sudo playit setup
+       sudo playit setup 
+       claim_code=$(playit claimcode)
+       echo "Claim code link: $claim_code"
        echo "Xong, Vui Lòng kết nối playit"
        sudo systemctl start playit &>/dev/null &
        while ps axg | grep -vw grep | grep -w wget > /dev/null; do sleep 1; done
