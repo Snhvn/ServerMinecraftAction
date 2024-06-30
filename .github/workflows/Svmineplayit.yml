@@ -7,7 +7,7 @@ on:
         description: 'nhập phiên bản ở đây lưu ý bạn phải ghi phiên bản từ 1.16.5 - 1.12.3 nha'
         required: true
       server_icon:
-        description: 'nhập link ảnh server vào'
+        description: 'nhập link ảnh server vào (Lưu Ý Phải x64 bit)'
         required: true
 jobs:
  build:
@@ -25,8 +25,6 @@ jobs:
        echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | sudo tee /etc/apt/sources.list.d/playit-cloud.list
        sudo apt update
        sudo apt install playit
-       wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64
-       chmod +x playit-linux-amd64
     - name: Cài Playit 2
       run: |
        sudo playit setup
