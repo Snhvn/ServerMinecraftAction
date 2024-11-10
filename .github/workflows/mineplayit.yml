@@ -67,5 +67,8 @@ jobs:
        use-native-transport=true
        view-distance=10
        white-list=false > server.properties
+       sudo mkdir /plugins/
+       cd /plugins/
+       sudo wget https://github.com/playit-cloud/playit-minecraft-plugin/releases/latest/download/playit-minecraft-plugin.jar
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar
        
