@@ -1,0 +1,35 @@
+name: Server No Plugin | Playit
+
+on:
+  workflow_dispatch:
+    inputs:
+      phien_ban:
+        description: 'nhập phiên bản ở đây lưu ý bạn phải ghi phiên bản từ 1.16.5 - 1.12.3 nha'
+        required: true
+      server_icon:
+        description: 'nhập link ảnh server vào (Lưu Ý Phải lựa x64 bit)'
+        required: true
+      port:
+        description: 'Nhập port bạn vào đây'
+        required: true
+jobs:
+ build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 19
+      uses: actions/setup-java@v3
+      with:
+        java-version: '19'
+        distribution: 'temurin'
+    - name: Cài File Spigot Và Chạy Server
+      run: |
+       wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
+       wget -O server-icon.png ${{github.event.inputs.server_icon}}
+       java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
+       rm -rf eula.txt
+       wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
+       rm -rf server.properties
+       wget -O server.properties https://github.com/Snhvn/ServerMinecraftAction/raw/main/server.properties
+       java -jar spigot-${{github.event.inputs.phien_ban}}.jar
+       
