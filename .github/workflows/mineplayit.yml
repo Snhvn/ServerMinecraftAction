@@ -30,6 +30,42 @@ jobs:
        rm -rf eula.txt
        wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
        rm -rf server.properties
-       wget -O server.properties https://github.com/Snhvn/ServerMinecraftAction/raw/main/server.properties
+       #Minecraft server properties
+       #Mon Jun 24 12:51:03 UTC 2024
+       allow-flight=false
+       allow-nether=true
+       difficulty=1
+       enable-command-block=true
+       enable-query=false
+       enable-rcon=false
+       force-gamemode=false
+       gamemode=1
+       generate-structures=true
+       generator-settings=
+       hardcore=false
+       level-name=world
+       level-seed=
+       level-type=DEFAULT
+       max-build-height=256
+       max-players=20
+       max-world-size=29999984
+       motd=Server Tipac Vn | https//://dsc.gg/servertipacvn
+       network-compression-threshold=256
+       online-mode=false
+       op-permission-level=4
+       player-idle-timeout=0
+       prevent-proxy-connections=false
+       pvp=true
+       resource-pack=
+       resource-pack-sha1=
+       server-ip=
+       server-port=${{github.event.inputs.port}}
+       snooper-enabled=true
+       spawn-animals=true
+       spawn-monsters=true
+       spawn-npcs=true
+       use-native-transport=true
+       view-distance=10
+       white-list=false > server.properties
        java -jar spigot-${{github.event.inputs.phien_ban}}.jar
        
