@@ -31,41 +31,8 @@ jobs:
        rm -rf server.properties
        #Minecraft server properties
        #Mon Jun 24 12:51:03 UTC 2024
-       allow-flight=false
-       allow-nether=true
-       difficulty=1
-       enable-command-block=true
-       enable-query=false
-       enable-rcon=false
-       force-gamemode=false
-       gamemode=1
-       generate-structures=true
-       generator-settings=
-       hardcore=false
-       level-name=world
-       level-seed=
-       level-type=DEFAULT
-       max-build-height=256
-       max-players=20
-       max-world-size=29999984
-       motd=Server Tipac Vn | https//://dsc.gg/servertipacvn
-       network-compression-threshold=256
-       online-mode=false
-       op-permission-level=4
-       player-idle-timeout=0
-       prevent-proxy-connections=false
-       pvp=true
-       resource-pack=
-       resource-pack-sha1=
        server-ip=
-       server-port=${{github.event.inputs.port}}
-       snooper-enabled=true
-       spawn-animals=true
-       spawn-monsters=true
-       spawn-npcs=true
-       use-native-transport=true
-       view-distance=10
-       white-list=false > server.properties
+       server-port=${{github.event.inputs.port}} > server.properties
        sudo mkdir /plugins/
        cd /plugins/
        sudo wget https://github.com/playit-cloud/playit-minecraft-plugin/releases/latest/download/playit-minecraft-plugin.jar
