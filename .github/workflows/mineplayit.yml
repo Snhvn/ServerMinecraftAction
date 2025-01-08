@@ -9,6 +9,9 @@ on:
       port:
         description: 'Nhập port bạn vào đây'
         required: true
+      build:
+        description: 'Nhập Build của papermc'
+        required: true
 jobs:
  build:
     runs-on: ubuntu-latest
