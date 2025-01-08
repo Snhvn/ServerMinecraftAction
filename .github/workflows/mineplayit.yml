@@ -29,12 +29,7 @@ jobs:
        rm -rf eula.txt
        wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
        rm -rf server.properties
-       #Minecraft server properties
-       #Mon Jun 24 12:51:03 UTC 2024
-       server-ip=
-       server-port=${{github.event.inputs.port}} > server.properties
        sudo mkdir /plugins/
-       cd /plugins/
-       sudo wget https://github.com/playit-cloud/playit-minecraft-plugin/releases/latest/download/playit-minecraft-plugin.jar
+       sudo wget /plugins/playit-minecraft-plugin.jar https://github.com/playit-cloud/playit-minecraft-plugin/releases/latest/download/playit-minecraft-plugin.jar
        java -jar paper-${{github.event.inputs.phien_ban}}-${{github.event.inputs.build}}.jar
        
