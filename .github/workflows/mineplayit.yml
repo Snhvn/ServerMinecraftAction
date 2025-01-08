@@ -4,10 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       phien_ban:
-        description: 'nhập phiên bản ở đây lưu ý bạn phải ghi phiên bản từ 1.16.5 - 1.12.3 nha'
-        required: true
-      server_icon:
-        description: 'nhập link ảnh server vào (Lưu Ý Phải lựa x64 bit)'
+        description: 'nhập phiên bản ở đây lưu ý bạn phải ghi phiên bản từ 1.12.2 trở lên nha'
         required: true
       port:
         description: 'Nhập port bạn vào đây'
@@ -24,9 +21,8 @@ jobs:
         distribution: 'temurin'
     - name: Cài File Spigot Và Chạy Server
       run: |
-       wget https://cdn.getbukkit.org/spigot/spigot-${{github.event.inputs.phien_ban}}.jar
-       wget -O server-icon.png ${{github.event.inputs.server_icon}}
-       java -jar spigot-${{github.event.inputs.phien_ban}}.jar &>/dev/null &
+       wget https://api.papermc.io/v2/projects/paper/versions/${{github.event.inputs.phien_ban}}/builds/${{github.event.inputs.build}}/downloads/paper-${{github.event.inputs.phien_ban}}-${{github.event.inputs.build}}.jar 
+       java -jar paper-${{github.event.inputs.phien_ban}}-${{github.event.inputs.build}}.jar &>/dev/null &
        rm -rf eula.txt
        wget -O eula.txt https://github.com/Snhvn/ServerMinecraftAction/raw/main/eula.txt
        rm -rf server.properties
@@ -70,5 +66,5 @@ jobs:
        sudo mkdir /plugins/
        cd /plugins/
        sudo wget https://github.com/playit-cloud/playit-minecraft-plugin/releases/latest/download/playit-minecraft-plugin.jar
-       java -jar spigot-${{github.event.inputs.phien_ban}}.jar
+       java -jar paper-${{github.event.inputs.phien_ban}}-${{github.event.inputs.build}}.jar
        
